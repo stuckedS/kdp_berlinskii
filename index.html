@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aero_login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="form">
+        <ul class="tab-group">
+            <li class="tab  active"><a href="#login">Вход</a></li>
+            <li class="tab"><a href="#signup">Регистрация</a></li>   
+        </ul>
+
+        <div class="tab-content">
+
+
+            <div id="login">
+                <h1>Добро пожаловать!</h1>
+
+                <form action="/php/authorization.php" method="post">
+
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <label>
+                                Логин<span class="req">*</span>
+                            </label>
+                            <input type="text" name="username" required autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            Пароль<span class="req">*</span>
+                        </label>
+                        <input name="password" type="password" required autocomplete="off" />
+                    </div>
+
+
+                    <button type="submit" class="button button-block" onclick="login()">Вход</button>
+
+                </form>
+
+            </div>
+            <div id="signup">
+                <h1>Регистрация</h1>
+
+                <form action="/php/registration.php" method="post">
+
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <label>
+                                Введите логин<span class="req">*</span>
+                            </label>
+                            <input type="text" name="username" required autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            Введите пароль<span class="req">*</span>
+                        </label>
+                        <input type="password" name="password" required autocomplete="off" />
+                    </div>
+
+                    <button type="submit" class="button button-block">Регистрация</button>
+
+                </form>
+
+            </div>
+
+        </div><!-- tab-content -->
+
+    </div> <!-- /form -->
+
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+        function validation(form_val) {
+            var username = form_val.username.value;
+            var password = form_val.password.value;
+            var cpassword = form_val.cpassword.value;
+            if (username == "") {
+                alert("please enter your username first.");
+                form_val.username.focus();
+                return false;
+            }
+            if (username.length < 6) {
+                alert("username must be at least of 6 characters.");
+                form_val.username.focus();
+                return false;
+            }
+            if (password == " ") {
+                alert("please enter your password.");
+                form_val.password.focus();
+                return false;
+            }
+            if (password.length < 8) {
+                alert("password must contain at least of 8 digits");
+                form_val.password.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script src="js/login.js"></script>
+
+    <script src="php/connect.php"></script>
+</body>
+
+</html>
